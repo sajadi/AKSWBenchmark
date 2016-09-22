@@ -1,0 +1,129 @@
+<configuration>
+    <percentageOfClassesConsidered>
+        100
+    </percentageOfClassesConsidered>
+
+    <percentageOfDataRequired>
+        10
+    </percentageOfDataRequired>
+
+    <stores>
+        <store type="virtuoso">
+            <dsn>jdbc:virtuoso://dbpedia.aksw.org:1196</dsn>
+            <!--dsn>jdbc:virtuoso://dbpedia.org</dsn-->
+            <username>dba</username>
+            <password>d1b2a3</password>
+        </store>
+    </stores>
+
+    <outputFile type="N-TRIPLE">d:/benchmark_100.nt</outputFile>
+
+    <!-- -This parameter defines the triple store that will be tested its allowed values are virtuoso, sesame, jenatdb, bigowlim-->
+    <tripleStoreToTest>sesame</tripleStoreToTest>
+
+    <!-- This file is used as input file for loading the Virtuoso triplestore with data-->
+    <virtuosoInputTriplesFile>D:/benchmark_10.nt</virtuosoInputTriplesFile>
+
+    <includeSubresources>true</includeSubresources>
+
+    <extractionMethod>RandomInstance</extractionMethod>
+    <decompressFiles>false</decompressFiles>
+
+    <maxNumberOfReturnedResultsPerQuery>2000</maxNumberOfReturnedResultsPerQuery>
+
+    <classesInputFileName>D:/inputClasses.dat</classesInputFileName>
+    <triplesInputFolderName>D:/wikipediaDump</triplesInputFolderName>
+    <!--sparqlEndpoint>http://dbpedia.aksw.org:8899/sparql</sparqlEndpoint-->
+    <sparqlEndpoint>http://dbpedia.aksw.org:8999/sparql</sparqlEndpoint>
+    <!--sparqlEndpoint>http://localhost:8890/sparql</sparqlEndpoint-->
+
+    <virtuosoServerAddress>http://dbpedia.aksw.org:8999/sparql</virtuosoServerAddress>
+    <numberOfTriples>1000000</numberOfTriples>
+
+    <queryLogFolder>D:/Leipzig University/AKSWBenchmark_Log</queryLogFolder>
+
+    <!-- This is the inputFile that will contain the queries after sorting them descendingly according to the number of occurrences-->
+    <sortedQueriesOutputFile>D:/Leipzig University/AKSWBenchmark_Log/sortedqueries.log</sortedQueriesOutputFile>
+
+    <!-- This is the inputFile that will contain the queries after sorting them and discarding the least frequent queries-->
+    <readyForClusteringFile>D:/Leipzig University/AKSWBenchmark_Log/readyforclustering.log</readyForClusteringFile>
+
+    <!-- This is the inputFile that will contain similarities between queries-->
+    <querySimilaritesFile>D:/Leipzig University/AKSWBenchmark_Log/querysimilarities.txt</querySimilaritesFile>
+
+    <!-- This is the inputFile that will contain the output of the clustering tool i.e. BorderFlow, which will be used as an
+    input inputFile to keepClusters function in order to remove the small clusters i.e clusters with one or two queries inside -->
+    <clusteredQueriesInputFile>D:/Leipzig University/AKSWBenchmark_Log/clusters_hard_silhouette.csv</clusteredQueriesInputFile>
+
+    <!-- This is the inputFile will contain the output of the clustering tool after removing all clusters with small number of
+     elements inside-->
+    <clusteredQueriesOutputFile>D:/Leipzig University/AKSWBenchmark_Log/clusteredOutput.txt</clusteredQueriesOutputFile>
+
+    <!-- This inputFile contains each _query along with it ID, it will be used as input for the clustering tool
+    and it will also be used later to refer to the queries that will be used to measure the performance of each
+    triple-store, so we can refer to the _query with it ID and access also its body-->
+    <queryIDsFile>D:/Leipzig University/AKSWBenchmark_Log/queries_IDs.txt</queryIDsFile>
+
+    <queryExecutionTimeFile>/home/mohamed/LeipzigUniversity/benchmark_executiontimes/queryexecutiontimes.txt</queryExecutionTimeFile>
+
+    <!-- This file is used as input file for loading the Sesame triplestore with data-->
+    <sesameInputTriplesFile>D:/benchmark_10.nt</sesameInputTriplesFile>
+
+    <!-- This file is used as input file for loading the JenaTDB triplestore with data-->
+    <jenaTDBInputTriplesFile>D:/benchmark_10.nt</jenaTDBInputTriplesFile>
+
+    <!-- This is the address of the Sesame server-->
+    <!--sesameServerAddress>http://dbpedia.aksw.org:8080/openrdf-sesame</sesameServerAddress-->
+    <!--sesameServerAddress>http://139.18.2.138:8080/openrdf-sesame</sesameServerAddress-->
+    <sesameServerAddress>http://dbpedia.aksw.org:8080/openrdf-workbench/repositories/dbpedia1/query</sesameServerAddress>
+
+    <!--sesameServerAddress>http://localhost:9999/sesame</sesameServerAddress-->
+
+    <!-- The ID of the repository to which data will be loaded, or should be queried -->
+    <sesameRepositoryID>dbpedia1</sesameRepositoryID>
+
+    <!-- This file is used as input file for generating another 100% of DBpedia triples with renaming URIs-->
+    <extendedDatasetInputTriplesFile>D:/benchmark_10.nt</extendedDatasetInputTriplesFile>
+
+    <!-- This file is used as output file. After generating another 100% of DBpedia triples with renaming URIs,
+    the output of the generation process will be written to that file-->
+    <extendedDatasetOutputTriplesFile>D:/benchmarkExtended_10.nt</extendedDatasetOutputTriplesFile>
+
+    <!-- This file is used as input file for loading the JenaTDB triplestore with data-->
+    <jenaTDBInputTriplesFile>D:/benchmark_10.nt</jenaTDBInputTriplesFile>
+
+
+    <!-- This file will contain the running time of each query, each time it was run, i.e. sequence of running times-->
+    <runningTimesFile>/home/mohamed/LeipzigUniversity/benchmark_executiontimes/runningExecutiontimes.txt</runningTimesFile>
+
+    <!-- This is the address of the JenaTDB graph-->
+    <jenaTDBDatasetGraph>/opt/jena_tdb/TDB-0.8.7/dbpedia50</jenaTDBDatasetGraph>
+
+    <!-- This is the address of the JenaTDB server, in case of accessing it over HTTP-->
+    <jenaTDBServerAddress>http://dbpedia.aksw.org:2020/dbpedia</jenaTDBServerAddress>
+
+    <queriesInputFile>/home/mohamed/LeipzigUniversity/akswbenchmark/queries.txt</queriesInputFile>
+    
+    <leastFrequencyForQuery>10</leastFrequencyForQuery>
+
+    <!-- The time period used as warm-up for a triplestore (in minutes) -->
+    <warmupTimePeriod>2</warmupTimePeriod>
+
+   <!-- The actual running time fo queries against a triplestore (in minutes) -->
+    <actualRunningTimePeriod>5</actualRunningTimePeriod>
+
+    <!-- The time limit for running a query (in minutes), after that time limit the query execution should be interrupted,
+    in order not block the execution of other queries-->
+    <queryExecutionTimeLimit>3</queryExecutionTimeLimit>
+
+    <errorFile>d:\error.txt</errorFile>
+
+    <!-- This is the address of the Sesame server containing BigOWLIM repository-->
+    <!--bigOWLIMServerAddress>http://dbpedia.aksw.org:8080/openrdf-sesame</bigOWLIMServerAddress-->
+    <bigOWLIMServerAddress>http://dbpedia.aksw.org:8080/openrdf-workbench/repositories/dbpedia_bigowlim/query</bigOWLIMServerAddress>
+
+
+    <!-- The ID of the repository the should be queried in BigOWLIM -->
+    <bigOWLIMRepositoryID>dbpedia10_bigowlim</bigOWLIMRepositoryID>
+
+</configuration>

@@ -1,0 +1,7 @@
+--select * from DB.DBA.Instance
+--INSERT INTO DB.DBA.Instance (InstanceHash, InstanceURI, isSelected, ClassID)VALUES('a', 'b', 0, 1)
+--delete from DB.DBA.Instance 
+CREATE INDEX InstanceIndex_Index ON DB.DBA.Instance(InstanceIndex)
+
+--ALTER TABLE DB.DBA.Instance DROP COLUMN InstanceIndex
+--ALTER TABLE DB.DBA.Instance ADD COLUMN InstanceIndex INTEGER NOT NULL UNIQUE IDENTITY
